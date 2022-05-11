@@ -7,7 +7,11 @@ SampleStoreTest sampleStoreTest = new SampleStoreTest();
 sampleStoreTest.Select();
 //sampleStoreTest.Add();
 //sampleStoreTest.Delete();
-sampleStoreTest.Update();
+//sampleStoreTest.Update();
+//sampleStoreTest.SelectWithSP();
+//sampleStoreTest.SelectWithCustomEntity();
+
+sampleStoreTest.SelectRelatedData();
 
 
 
