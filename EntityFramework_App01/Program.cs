@@ -4,13 +4,12 @@ using EntityFramework_App01;
 Console.WriteLine("Hello, World!");
 
 SampleStoreTest sampleStoreTest = new SampleStoreTest();
-sampleStoreTest.Select();
+//sampleStoreTest.Select();
 //sampleStoreTest.Add();
 //sampleStoreTest.Delete();
 //sampleStoreTest.Update();
 //sampleStoreTest.SelectWithSP();
 //sampleStoreTest.SelectWithCustomEntity();
-
 sampleStoreTest.SelectRelatedData();
 
 

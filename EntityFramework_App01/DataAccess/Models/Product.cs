@@ -18,8 +18,8 @@ namespace EntityFramework_App01.DataAccess.Models
         public Int16 model_year { get; set; } 
         public decimal list_price { get; set; } 
         
-        public int brand_id { get; set; }
-        [ForeignKey("brand_id")]
+        public int bRAnd_id { get; set; }
+        [ForeignKey("bRAnd_id")]
         public Brands brand { get; set; }
 
         public int category_id { get; set; }

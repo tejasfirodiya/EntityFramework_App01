@@ -143,26 +143,42 @@ internal class SampleStoreTest
         var product2 = context.Products.Select(p => p.product_id).ToList();
 
         //select * from product where brand_id = 5
-        var product3 = context.Products.Where(p => p.brand_id == 5).ToList();
+        var product3 = context.Products.Where(p => p.bRAnd_id == 5).ToList();
 
         //select * from product order by category id
         var product4 = context.Products.OrderBy(p => p.category_id).ToList();
 
+        //SELECT
+        //    product_id, product_name
+        //from
+        //    production.products
+        //where
+        //    category_id = 1 and brand_id = 3
+        //order by
+        //product_name
 
-
+        var product5 = context.Products
+            .Where(p => p.bRAnd_id == 3 && p.category_id == 1)
+            .OrderBy(p => p.product_name)
+            .Select(p => new ProductResult { ProductId = p.product_id, ProductName = p.product_name }).ToList();
 
         var products = context.Products.Include("brand").Include("categories").ToList();
 
         Console.WriteLine("-----------Person-----------");
         foreach (var p in products)
         {
-            Console.WriteLine($"{p.product_name}, {p.brand_id}, {p.brand.brand_id}, {p.categories.category_name}");
+            Console.WriteLine($"{p.product_name}, {p.bRAnd_id}, {p.brand.brand_id}, {p.categories.category_name}");
         }
         Console.WriteLine("----------------------------");
 
     }
 }
 
+public class ProductResult
+{
+    public int ProductId { get; set; }
+    public string ProductName { get; set; }
+}
 
 
 
