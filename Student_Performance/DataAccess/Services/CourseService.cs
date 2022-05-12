@@ -9,16 +9,19 @@ namespace Student_Performance.DataAccess.Services;
 
 internal class CourseService
 {
-    string s = new string('-', 65);
+    string s = new string('-', 63);
 
     public void Select()
     {
         using (var Context = new StudentPerformanceContext())
         {
             var courses = Context.Courses.ToList();
-
-            Console.WriteLine("---------------Course------------------");
-
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\t\tDisplaying Course List...");
+            Console.ResetColor();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(s);
             Console.WriteLine("| Course Id | Course Code | Course Title | Course Description |");
             Console.WriteLine(s);
@@ -27,7 +30,10 @@ internal class CourseService
             {
                 Console.WriteLine($"| {course.Course_Id,-9} | {course.Course_Code,-11} | {course.Course_Title,-12} | {course.Course_Description,-18} |");
             }
-            Console.WriteLine(s);
+            Console.WriteLine(s + "\n");
+
+            Console.ResetColor();
+
         }
     }
 
@@ -36,8 +42,16 @@ internal class CourseService
         Course courseObj = new Course();
 
         var context = new StudentPerformanceContext();
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Blue;
 
         courseObj.AddCourse();
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.White;
+
+        Console.WriteLine("Course inserted successfully.....");
+        Console.ResetColor();
 
         var course = new Course
         {
@@ -80,7 +94,7 @@ internal class CourseService
         context.SaveChanges();
     }
 
-    public void DeleteCourse()
+    public void Delete()
     {
         Console.WriteLine("Enter code to be Delete");
 
@@ -113,25 +127,5 @@ internal class CourseService
             context.SaveChanges();
         }
     }
-    public void Delete()
-    {
-        Console.WriteLine("Enter the Course Id to be deleted ");
-        var courseIdText = Console.ReadLine();
-        var courseIdToBeDeleted = int.Parse(courseIdText);
-
-        using var context = new StudentPerformanceContext();
-
-        var course = context.Courses.FirstOrDefault(xyz => xyz.Course_Id == courseIdToBeDeleted);
-
-        if (course == null)
-        {
-            Console.WriteLine($"Course with id = {courseIdToBeDeleted} not found");
-            return;
-        }
-
-        context.Courses.Remove(course);
-        context.SaveChanges();
-
-        context.Dispose();
-    }
+    
 }

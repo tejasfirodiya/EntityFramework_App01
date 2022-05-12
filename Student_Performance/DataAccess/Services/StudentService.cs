@@ -55,67 +55,62 @@ internal class StudentService
 
     public void Update()
     {
-        //Student studentObj = new Student();
+        Student studentObj = new Student();
 
-        //Console.WriteLine("Enter the Student Roll No to be updated ");
-        //var studentRollNoText = Console.ReadLine();
-        //var studentRollNoToBeUpdated = int.Parse(studentRollNoText);
+        Console.WriteLine("Enter the Student Roll No to be updated ");
+        var studentRollNoText = Console.ReadLine();
+        var studentRollNoToBeUpdated = int.Parse(studentRollNoText);
 
-        //using var context = new StudentPerformanceContext();
+        using var context = new StudentPerformanceContext();
 
-        //var student = context.Students.FirstOrDefault(xyz => xyz.Student_Roll_No == studentRollNoToBeUpdated);
+        var student = context.Students.FirstOrDefault(xyz => xyz.Student_Roll_No == studentRollNoToBeUpdated);
 
-        //if (student == null)
-        //{
-        //    Console.WriteLine($"Student with Roll No = {studentRollNoToBeUpdated} not found");
-        //    return;
-        //}
+        if (student == null)
+        {
+            Console.WriteLine($"Student with Roll No = {studentRollNoToBeUpdated} not found");
+            return;
+        }
 
-        //studentObj.AddStudent();
+        studentObj.AddStudent();
 
-        //student.Student_Roll_No = studentObj.Student_Roll_No;
-        //student.Student_Name = studentObj.Student_Name;
-        //student.Student_email = studentObj.Student_email;
-        //student.Student_Address = studentObj.Student_Address;
-        //student.FK_Course_Id = studentObj.FK_Course_Id;
+        student.Student_Roll_No = studentObj.Student_Roll_No;
+        student.Student_Name = studentObj.Student_Name;
+        student.Student_email = studentObj.Student_email;
+        student.Student_Address = studentObj.Student_Address;
+        student.FK_Course_Id = studentObj.FK_Course_Id;
 
-        //context.Students.Update(student);
-        //context.SaveChanges();
+        context.Students.Update(student);
+        context.SaveChanges();
     }
 
-    //public void DeleteUsingEntityFramework()
-    //{
-    //    //Console.WriteLine("Enter the Student Roll No to be deleted ");
-    //    //var studentRollNoText = Console.ReadLine();
-    //    //var studentRollNoToBeDeleted = int.Parse(studentRollNoText);
+    public void Delete()
+    {
+        Console.WriteLine("Enter the Student Roll No to be deleted ");
+        var studentRollNoText = Console.ReadLine();
+        var studentRollNoToBeDeleted = int.Parse(studentRollNoText);
 
-    //    using var context = new StudentPerformanceContext();
+        using var context = new StudentPerformanceContext();
+        {
+            var studentObj = context.Students.FirstOrDefault(x => x.Student_Roll_No == studentRollNoToBeDeleted);
 
-    //    Console.WriteLine("Enter the Student Id to be deleted ");
-    //    var studentIdText = Console.ReadLine();
-    //    var studentIdToBeDeleted = int.Parse(studentIdText);
+            if (studentObj.Student_Roll_No == null)
+            {
+                Console.WriteLine($"Student with Roll No = {studentRollNoToBeDeleted} not found");
+                return;
+            }
 
+            var marks = context.Marks.Where(x => x.FK_Student_Id == studentObj.Student_Id).ToList();
 
-    //    var student = context.Students.FirstOrDefault(xyz => xyz.Student_Id == studentIdToBeDeleted);
+            foreach (var mark in marks)
+            {
+                context.Marks.Remove(mark);
+            }
 
-    //    if (student == null)
-    //    {
-    //        Console.WriteLine($"Student with Id = {studentIdToBeDeleted} not found");
-    //        return;
-    //    }
-
-    //    var removeStudentFromMarks = context.Marks.Where(fk => fk.FK_Student_Id == studentIdToBeDeleted);
-    //    context.Marks.Remove(removeStudentFromMarks);
-
-    //    var removeStudentFromStudent = context.Students.Where(pk => pk.Student_Id == studentIdToBeDeleted);
-    //    (removeStudentFromStudent);
-
-    //    context.SaveChanges();
-
-    //    context.Dispose();
-    //}
-
-    
+            context.Students.Remove(studentObj);
+            context.SaveChanges();
+        }
+    }
+}
 
     //public void DeleteUsingSP()
     //{
@@ -152,4 +147,4 @@ internal class StudentService
 
     //    context.Dispose();
     //}
-}
+
