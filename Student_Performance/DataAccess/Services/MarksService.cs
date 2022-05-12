@@ -20,12 +20,12 @@ internal class MarksService
             Console.WriteLine("---------------Marks------------------");
 
             Console.WriteLine(s);
-            Console.WriteLine("| Student Id | Student Name         | Subject Id | Subject Title           | Marks |");
+            Console.WriteLine("| Student Id  | Roll No | Student Name         | Subject Id | Subject Code | Subject Title           | Marks |");
             Console.WriteLine(s);
 
             foreach (var mark in marks)
             {
-                Console.WriteLine($"| {mark.FK_Student_Id,-7} | {mark.student.Student_Name,-20} | {mark.FK_Subject_Id} | {mark.subject.Subject_Title,-23} | {mark.marks,-5} |");
+                Console.WriteLine($"| {mark.FK_Student_Id,-7} | {mark.student.Student_Roll_No} | {mark.student.Student_Name,-20} | {mark.FK_Subject_Id} | {mark.subject.Subject_Code} | {mark.subject.Subject_Title,-23} | {mark.marks,-5} |");
             }
             Console.WriteLine(s);
         }
@@ -81,7 +81,7 @@ internal class MarksService
     {
         Marks marksObj = new Marks();
 
-        Console.WriteLine("Enter the Student Roll No to be updated ");
+        Console.WriteLine("Enter the Student Roll No to be deleted ");
         var studentRollNoText = Console.ReadLine();
         var studentRollNoToBeDeleted = int.Parse(studentRollNoText);
 

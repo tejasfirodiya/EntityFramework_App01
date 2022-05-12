@@ -13,13 +13,15 @@ Console.WriteLine("Hello, World!");
 //courseService.Add();
 //courseService.Update();
 //courseService.Delete();
+//courseService.DeleteCourse();
 //courseService.Select();
 
 //StudentService studentService = new StudentService();
 //studentService.Select();
 //studentService.Add();
 //studentService.Update();
-//studentService.Delete();
+//studentService.DeleteUsingEntityFramework();
+//studentService.DeleteUsingSP();
 //studentService.Select();
 
 //SubjectService subjectService = new SubjectService();
@@ -29,9 +31,12 @@ Console.WriteLine("Hello, World!");
 //subjectService.Delete();
 //subjectService.Select();
 
-MarksService marksService = new MarksService();
-marksService.Select();
+//MarksService marksService = new MarksService();
+//marksService.Select();
 //marksService.Add();
-marksService.Update();
+//marksService.Update();
 //marksService.Delete();
-marksService.Select();
+//marksService.Select();
+
+Menu menu = new Menu();
+menu.showMenu();

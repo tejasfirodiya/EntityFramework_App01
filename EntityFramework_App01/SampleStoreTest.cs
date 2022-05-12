@@ -129,7 +129,6 @@ internal class SampleStoreTest
             Console.WriteLine($"{p.product_id},{p.product_name}, {p.brand_name}, {p.category_name}, {p.list_price}");
         }
         Console.WriteLine("----------------------------");
-
     }
 
     public void SelectRelatedData()

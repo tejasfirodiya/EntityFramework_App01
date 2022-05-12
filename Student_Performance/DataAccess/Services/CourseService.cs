@@ -10,7 +10,7 @@ namespace Student_Performance.DataAccess.Services;
 internal class CourseService
 {
     string s = new string('-', 65);
-  
+
     public void Select()
     {
         using (var Context = new StudentPerformanceContext())
@@ -80,6 +80,39 @@ internal class CourseService
         context.SaveChanges();
     }
 
+    public void DeleteCourse()
+    {
+        Console.WriteLine("Enter code to be Delete");
+
+        string courseCodeTobedelete = Console.ReadLine();
+
+        using var context = new StudentPerformanceContext();
+        {
+            var courseObj = context.Courses.FirstOrDefault(x => x.Course_Code == courseCodeTobedelete);
+
+            var subjects = context.Subjects.Where(x => x.FK_Course_Id == courseObj.Course_Id).ToList();
+
+            var students = context.Students.Where(x => x.FK_Course_Id == courseObj.Course_Id).ToList();
+
+            foreach (var subject in subjects)
+            {
+                var subjectId = subject.Subject_Id;
+
+                Console.WriteLine(subjectId);
+                var markobj = context.Marks.FirstOrDefault(x => x.FK_Subject_Id == subjectId);
+                context.Marks.Remove(markobj);
+                context.Subjects.Remove(subject);
+            }
+
+            foreach (var student in students)
+            {
+                context.Students.Remove(student);
+            }
+
+            context.Courses.Remove(courseObj);
+            context.SaveChanges();
+        }
+    }
     public void Delete()
     {
         Console.WriteLine("Enter the Course Id to be deleted ");

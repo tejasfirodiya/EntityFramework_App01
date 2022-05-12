@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Student_Performance.DataAccess.Models;
 using System;
 using System.Collections.Generic;
@@ -54,54 +55,101 @@ internal class StudentService
 
     public void Update()
     {
-        Student studentObj = new Student();
+        //Student studentObj = new Student();
 
-        Console.WriteLine("Enter the Student Roll No to be updated ");
-        var studentRollNoText = Console.ReadLine();
-        var studentRollNoToBeUpdated = int.Parse(studentRollNoText);
+        //Console.WriteLine("Enter the Student Roll No to be updated ");
+        //var studentRollNoText = Console.ReadLine();
+        //var studentRollNoToBeUpdated = int.Parse(studentRollNoText);
 
-        using var context = new StudentPerformanceContext();
+        //using var context = new StudentPerformanceContext();
 
-        var student = context.Students.FirstOrDefault(xyz => xyz.Student_Roll_No == studentRollNoToBeUpdated);
+        //var student = context.Students.FirstOrDefault(xyz => xyz.Student_Roll_No == studentRollNoToBeUpdated);
 
-        if (student == null)
-        {
-            Console.WriteLine($"Student with Roll No = {studentRollNoToBeUpdated} not found");
-            return;
-        }
+        //if (student == null)
+        //{
+        //    Console.WriteLine($"Student with Roll No = {studentRollNoToBeUpdated} not found");
+        //    return;
+        //}
 
-        studentObj.AddStudent();
+        //studentObj.AddStudent();
 
-        student.Student_Roll_No = studentObj.Student_Roll_No;
-        student.Student_Name = studentObj.Student_Name;
-        student.Student_email = studentObj.Student_email;
-        student.Student_Address = studentObj.Student_Address;
-        student.FK_Course_Id = studentObj.FK_Course_Id;
+        //student.Student_Roll_No = studentObj.Student_Roll_No;
+        //student.Student_Name = studentObj.Student_Name;
+        //student.Student_email = studentObj.Student_email;
+        //student.Student_Address = studentObj.Student_Address;
+        //student.FK_Course_Id = studentObj.FK_Course_Id;
 
-        context.Students.Update(student);
-        context.SaveChanges();
+        //context.Students.Update(student);
+        //context.SaveChanges();
     }
 
-    public void Delete()
-    {
-        Console.WriteLine("Enter the Student Roll No to be deleted ");
-        var studentRollNoText = Console.ReadLine();
-        var studentRollNoToBeDeleted = int.Parse(studentRollNoText);
+    //public void DeleteUsingEntityFramework()
+    //{
+    //    //Console.WriteLine("Enter the Student Roll No to be deleted ");
+    //    //var studentRollNoText = Console.ReadLine();
+    //    //var studentRollNoToBeDeleted = int.Parse(studentRollNoText);
 
-        using var context = new StudentPerformanceContext();
+    //    using var context = new StudentPerformanceContext();
 
-        var student = context.Students.FirstOrDefault(xyz => xyz.Student_Roll_No == studentRollNoToBeDeleted);
+    //    Console.WriteLine("Enter the Student Id to be deleted ");
+    //    var studentIdText = Console.ReadLine();
+    //    var studentIdToBeDeleted = int.Parse(studentIdText);
 
-        if (student == null)
-        {
-            Console.WriteLine($"Student with Roll No = {studentRollNoToBeDeleted} not found");
-            return;
-        }
 
-        context.Students.Remove(student);
-        context.SaveChanges();
+    //    var student = context.Students.FirstOrDefault(xyz => xyz.Student_Id == studentIdToBeDeleted);
 
-        context.Dispose();
-    }
+    //    if (student == null)
+    //    {
+    //        Console.WriteLine($"Student with Id = {studentIdToBeDeleted} not found");
+    //        return;
+    //    }
 
+    //    var removeStudentFromMarks = context.Marks.Where(fk => fk.FK_Student_Id == studentIdToBeDeleted);
+    //    context.Marks.Remove(removeStudentFromMarks);
+
+    //    var removeStudentFromStudent = context.Students.Where(pk => pk.Student_Id == studentIdToBeDeleted);
+    //    (removeStudentFromStudent);
+
+    //    context.SaveChanges();
+
+    //    context.Dispose();
+    //}
+
+    
+
+    //public void DeleteUsingSP()
+    //{
+    //    using var context = new StudentPerformanceContext();
+
+    //    Console.WriteLine("Enter the Student Id to be deleted ");
+    //    var studentIdText = Console.ReadLine();
+    //    var studentIdToBeDeleted = int.Parse(studentIdText);
+
+    //    var sqlParameterStudentId = new SqlParameter("@Student_Id", System.Data.SqlDbType.BigInt);
+    //    sqlParameterStudentId.Value = studentIdToBeDeleted;
+
+    //    var students = context.Set<Student>().FromSqlRaw("[student].[Student_Data_Delete] @Student_Id", sqlParameterStudentId);
+
+    //    //var student = students.Select(x => x.Student_Roll_No);
+
+    //    //var student = context.Students.FirstOrDefault(xyz => xyz.Student_Id == sqlParameterStudentId);
+    //    var student = students.Select(x => x.Student_Id);
+
+    //    //if (student == null)
+    //    //{
+    //    //    Console.WriteLine($"Student with Id = {student} not found");
+    //    //    //Console.WriteLine($"Student with Id = 14 not found");
+    //    //    return;
+    //    //}
+    //    //Console.WriteLine("-----------StudentSP-----------");
+    //    //foreach (var S in students.Select(x => x.Student_Id))
+    //    //{
+    //    //    Console.WriteLine($"{S.Student_Id} | {S.Student_Name}");
+    //    //}
+    //    //Console.WriteLine("----------------------------");
+    //    //context.Students.Remove(student);
+    //    context.SaveChanges();
+
+    //    context.Dispose();
+    //}
 }
