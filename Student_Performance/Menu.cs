@@ -45,7 +45,7 @@ public class Menu
             Console.WriteLine("15. Update Marks");
             Console.WriteLine("16. Display Marks");
             
-            //Console.WriteLine("\n13. Ask roll number to display subject wise marks for a student");
+            Console.WriteLine("\n17. Ask roll number to display subject wise marks for a student");
             //Console.WriteLine("14. List Course wise average marks");
             //Console.WriteLine("15. List course wise max marks");
             //Console.WriteLine("16. List Course wise topper");
@@ -104,13 +104,14 @@ public class Menu
                     marksService.Delete();
                     break;
                 case 15:
-                    marksService.Select();
+                    marksService.Update();
                     break;
                 case 16:
-                    marksService.Update();
+                    marksService.Select();
                     break;
 
                 case 17:
+                    marksService.SubjectWiseMarksDisplay();
                     break;
                 case 18:
                     break;

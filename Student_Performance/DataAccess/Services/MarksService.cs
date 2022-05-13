@@ -104,5 +104,25 @@ internal class MarksService
         context.Dispose();
     }
 
+    public void SubjectWiseMarksDisplay()
+    {
+        using (var Context = new StudentPerformanceContext())
+        {
+            var marks = Context.Marks.Include("student").Include("subject").OrderBy(m => m.subject.Subject_Title).ToList();
+
+            Console.WriteLine("---------------SubjectWiseMarksDisplaying....------------------");
+
+            Console.WriteLine(s);
+            Console.WriteLine("| Subject Code | Subject Title           | Roll No | Student Name         | Marks |");
+            Console.WriteLine(s);
+
+            foreach (var mark in marks)
+            {
+                Console.WriteLine($"| {mark.subject.Subject_Code} | {mark.subject.Subject_Title,-23} | {mark.student.Student_Roll_No} | {mark.student.Student_Name,-20} | {mark.marks,-5} |");
+            }
+            Console.WriteLine(s);
+        }
+
+    }
 
 }

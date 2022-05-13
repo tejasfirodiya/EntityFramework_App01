@@ -17,6 +17,6 @@ internal class StudentPerformanceContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Data Source=WAZDORF\MSSQLSERVER03;Initial Catalog=Student_Performance_Management;Integrated Security=True");
+        optionsBuilder.UseSqlServer(@"Data Source=WAIANGDESK14\MSSQLSERVER01;Initial Catalog=Student_Performance_Management;Integrated Security=True");
     }
 }

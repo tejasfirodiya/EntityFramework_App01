@@ -112,39 +112,3 @@ internal class StudentService
     }
 }
 
-    //public void DeleteUsingSP()
-    //{
-    //    using var context = new StudentPerformanceContext();
-
-    //    Console.WriteLine("Enter the Student Id to be deleted ");
-    //    var studentIdText = Console.ReadLine();
-    //    var studentIdToBeDeleted = int.Parse(studentIdText);
-
-    //    var sqlParameterStudentId = new SqlParameter("@Student_Id", System.Data.SqlDbType.BigInt);
-    //    sqlParameterStudentId.Value = studentIdToBeDeleted;
-
-    //    var students = context.Set<Student>().FromSqlRaw("[student].[Student_Data_Delete] @Student_Id", sqlParameterStudentId);
-
-    //    //var student = students.Select(x => x.Student_Roll_No);
-
-    //    //var student = context.Students.FirstOrDefault(xyz => xyz.Student_Id == sqlParameterStudentId);
-    //    var student = students.Select(x => x.Student_Id);
-
-    //    //if (student == null)
-    //    //{
-    //    //    Console.WriteLine($"Student with Id = {student} not found");
-    //    //    //Console.WriteLine($"Student with Id = 14 not found");
-    //    //    return;
-    //    //}
-    //    //Console.WriteLine("-----------StudentSP-----------");
-    //    //foreach (var S in students.Select(x => x.Student_Id))
-    //    //{
-    //    //    Console.WriteLine($"{S.Student_Id} | {S.Student_Name}");
-    //    //}
-    //    //Console.WriteLine("----------------------------");
-    //    //context.Students.Remove(student);
-    //    context.SaveChanges();
-
-    //    context.Dispose();
-    //}
-

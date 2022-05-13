@@ -111,8 +111,8 @@ internal class CourseService
             foreach (var subject in subjects)
             {
                 var subjectId = subject.Subject_Id;
-
                 Console.WriteLine(subjectId);
+
                 var markobj = context.Marks.FirstOrDefault(x => x.FK_Subject_Id == subjectId);
                 context.Marks.Remove(markobj);
                 context.Subjects.Remove(subject);

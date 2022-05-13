@@ -21,6 +21,7 @@ internal class Student
     public int FK_Course_Id { get; set; }
     [ForeignKey("FK_Course_Id")]
     public Course course { get; set; }
+    public Marks marksss { get; set; }
 
     public void AddStudent()
     {
@@ -37,6 +38,12 @@ internal class Student
          Student_Address = Console.ReadLine();
 
         Console.Write("Enter Course Id : ");
-         FK_Course_Id = int.Parse(Console.ReadLine());
+        FK_Course_Id = int.Parse(Console.ReadLine());
+    }
+
+    public void GetMarks()
+    {
+        Console.Write("Enter Marks Id : ");
+        FK_Course_Id = int.Parse(Console.ReadLine());
     }
 }
